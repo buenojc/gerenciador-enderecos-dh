@@ -1,25 +1,19 @@
+import { useEffect, useState } from "react";
 import "./usersScreen.css";
 import Header from "../../components/Header";
 import UserCard from "../../components/UserCard";
+import api from "../../api/api";
 
-function usersScreen() {
-  const users = [
-    {
-      id: 1,
-      name: "Julio Cesar",
-      email: "email@email.com",
-    },
-    {
-      id: 2,
-      name: "Carlos",
-      email: "email@email.com",
-    },
-    {
-      id: 1,
-      name: "José",
-      email: "email@email.com",
-    },
-  ];
+function UsersScreen() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    async function getUsers() {
+      const { data } = await api.get("/users");
+      setUsers(data);
+    }
+    getUsers();
+  }, []);
 
   return (
     <>
@@ -33,4 +27,4 @@ function usersScreen() {
   );
 }
 
-export default usersScreen;
+export default UsersScreen;
