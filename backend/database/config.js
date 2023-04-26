@@ -1,7 +1,7 @@
 module.exports = {
   "development": {
     "username": "root",
-    "password": null,
+    "password": '0000',
     "database": "gerenciador_enderecos_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
